@@ -1,0 +1,28 @@
+<div class="card bg-dark" style="color: white; margin-top: 10px;">
+    <div class="card-header">
+        <h6 class="card-title">{{ objetosMovimentacao.tipo }}</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-8">
+                <div class="card bg-primary">
+                    <div class="card-header">
+                        <h6 class="card-title">Salário</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ objetosMovimentacao.descricao }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row h-50">
+                    {{ objetosMovimentacao.data }}
+                </div>
+                <div class="row h-50">
+                    R$ {{ objetosMovimentacao.valor }}
+                </div>
+            </div>
+        </div>
+      
+    </div>
+  </div>

@@ -7,6 +7,7 @@ import { GeralComponent } from './componentes/geral/geral.component';
 import { EntradasComponent } from './componentes/entradas/entradas.component';
 import { SaidasComponent } from './componentes/saidas/saidas.component';
 import { PrincipalHeaderComponent } from './componentes/principal-header/principal-header.component';
+import { MovimentacaoComponent } from './componentes/movimentacao/movimentacao.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PrincipalHeaderComponent } from './componentes/principal-header/princip
     GeralComponent,
     EntradasComponent,
     SaidasComponent,
-    PrincipalHeaderComponent
+    PrincipalHeaderComponent,
+    MovimentacaoComponent
   ],
   imports: [
     BrowserModule,
