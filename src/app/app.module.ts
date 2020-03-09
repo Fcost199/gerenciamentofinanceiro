@@ -8,6 +8,10 @@ import { EntradasComponent } from './componentes/entradas/entradas.component';
 import { SaidasComponent } from './componentes/saidas/saidas.component';
 import { PrincipalHeaderComponent } from './componentes/principal-header/principal-header.component';
 import { MovimentacaoComponent } from './componentes/movimentacao/movimentacao.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { environment } from '../environments/environment';
+import { API_URL, ApiUrlInterceptor } from './_helpers/http.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,17 @@ import { MovimentacaoComponent } from './componentes/movimentacao/movimentacao.c
     EntradasComponent,
     SaidasComponent,
     PrincipalHeaderComponent,
-    MovimentacaoComponent
+    MovimentacaoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: API_URL, useValue: environment.apiUrl},
+    {provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true, deps: [API_URL]}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
