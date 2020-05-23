@@ -1,25 +1,31 @@
-<div class="container">
-    <form>
-        <div class="col-12 row">
-            <div class="col-12">
-                CPF:
+<div class="container containerLogin p-2">
+    <div class="container text-center" id="logoContainer">
+        <img src="./assets/logo.png">
+    </div>
+    <div class="container text-center mt-2">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="input-group form-group">
+                <input type="text" formControlName="cpf" class="form-control" (keyup)="mCPF('login');" maxlength="14"
+                    placeholder="CPF"
+                    [ngClass]="{'is-invalid': fLogin.cpf.errors && (fLogin.cpf.dirty || fLogin.cpf.touched)}">
             </div>
-            <div class="col-12">
-                <input type="text" name="" class=" form-control">
+            <div *ngIf="fLogin.cpf.errors && fLogin.cpf.touched" class="text-danger">
+                <div *ngIf="fLogin.cpf.errors.required" class="mb-2">CPF is required</div>
             </div>
-        </div>
-        <div class="col-12 row">
-            <div class="col-12">
-                Senha:
+            <div class="input-group form-group">
+                <input type="password" formControlName="senha" class="form-control" placeholder="Senha"
+                    [ngClass]="{'is-invalid': fLogin.senha.errors && (fLogin.senha.dirty || fLogin.senha.touched)}">
             </div>
-            <div class="col-12">
-                <input type="text" name="" class="form-control">
+            <div *ngIf="fLogin.senha.errors && fLogin.senha.touched" class="text-danger">
+                <div *ngIf="fLogin.senha.errors.required" class="mb-2">Senha is required</div>
             </div>
-        </div>
-        <div class="row justify-content-center" style="margin-top: 20px;">
-            <div class="col-12 col-sm-6">
-                <button type="submit" class="btn form-control btn-dark"> Acessar </button>
-            </div>
-        </div>
-    </form>
+            <button class="btn  text-light" style="background-color: #7478fe;" [disabled]="loadingLogin">
+                <span *ngIf="!loadingLogin" class="font-weight-bold">Enviar</span>
+                <span *ngIf="loadingLogin" class="spinner-border spinner-border-sm text-light "></span>
+            </button><br>
+           <button type="button" class="btn font-weight-bold text-light mt-2" style="background-color: #67bcff;" data-toggle="modal" data-target="#novasenha">
+                Esqueci minha senha
+            </button>
+        </form>
+    </div>
 </div>

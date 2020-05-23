@@ -12,6 +12,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { environment } from '../environments/environment';
 import { API_URL, ApiUrlInterceptor } from './_helpers/http.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: API_URL, useValue: environment.apiUrl},
