@@ -11,7 +11,7 @@ import { MovimentacaoComponent } from './componentes/movimentacao/movimentacao.c
 import { LoginComponent } from './componentes/login/login.component';
 import { environment } from '../environments/environment';
 import { API_URL, ApiUrlInterceptor } from './_helpers/http.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -27,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     {provide: API_URL, useValue: environment.apiUrl},

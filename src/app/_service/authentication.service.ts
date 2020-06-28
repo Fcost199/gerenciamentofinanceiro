@@ -16,7 +16,7 @@ export class AuthenticationService {
     private http: HttpClient
   ) {
     //Observa o SessionStorage para ver se tem mudança
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem(`currentUser`))); 
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem(`currentUser`)));
     //Se houver alteração o currentUser tbm é alterado.
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -29,12 +29,14 @@ export class AuthenticationService {
       'Content-Type': 'application/json'
     };
 
+
     let options = { headers: new HttpHeaders( headerDict ) };
 
-    return this.http.post<any>('login/autenticar/', { cpf, password }, options)
+    return this.http.post<any>('usuario/autenticar/', { cpf, password }, options)
       .pipe(map(user => {
         sessionStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
+        console.log( user )
         return user;
       }));
 
